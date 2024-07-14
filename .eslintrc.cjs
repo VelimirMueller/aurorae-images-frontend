@@ -20,8 +20,8 @@ module.exports = {
   'overrides': [
     {
       'files': [
-        '*.vue',
-        '*.ts'
+        '**/*.vue',
+        '**/*.ts'
       ],
       rules: {
         '@typescript-eslint/indent': ['error', 2],
