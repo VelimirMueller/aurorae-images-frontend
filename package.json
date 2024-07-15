@@ -1,5 +1,5 @@
 {
-  "name": "devcourses",
+  "name": "VLMDevCourses",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,13 +7,14 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "test:unit": "vitest",
+    "test": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@phosphor-icons/vue": "^2.2.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.29"
   },
