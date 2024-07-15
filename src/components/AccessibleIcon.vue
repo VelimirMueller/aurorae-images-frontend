@@ -15,7 +15,7 @@ const props = defineProps({
   icon: {
     type: String,
     required: true,
-    validate: (val: string) => ['horse', 'heart', 'cube'].includes(val)
+    validate: (val: string) => ['book'].includes(val)
   }
 })
 
