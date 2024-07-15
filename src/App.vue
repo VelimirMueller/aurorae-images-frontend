@@ -1,9 +1,12 @@
-<template>
-  <DefaultLayout>
-    <h1 class="text-4xl font-bold bg-red-200 h-full">Hello World!</h1>
+<template >
+  <DefaultLayout >
+    <h1 class="text-4xl font-bold bg-red-200 h-full" >
+      Hello World!
+    </h1>
   </DefaultLayout>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" >
 import DefaultLayout from '@/layout/DefaultLayout.vue'
+import AccessibleIcon from './components/AccessibleIcon.vue'
 </script>
