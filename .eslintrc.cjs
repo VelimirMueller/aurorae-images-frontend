@@ -43,12 +43,12 @@ module.exports = {
     }],
     'vue/html-closing-bracket-newline': ['error', {
       'singleline': 'never',
-      'multiline': 'always'
+      'multiline': 'never'
     }],
     'vue/html-closing-bracket-spacing': ['error', {
-      'startTag': 'never',
+      'startTag': 'always',
       'endTag': 'never',
-      'selfClosingTag': 'always'
+      'selfClosingTag': 'never'
     }],
     'vue/attributes-order': ['error', {
       'order': [
