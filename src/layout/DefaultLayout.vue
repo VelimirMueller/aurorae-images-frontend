@@ -14,14 +14,15 @@
 
 <script setup lang="ts">
 import NavBar from '@/layout/NavBar.vue'
+import type { NavLinks } from '@/types'
 
-interface NavLinks {
-  href: string
-  text: string
-}
 const navLinks: NavLinks[] = [
   { href: "#", text: "Courses" },
   { href: "#", text: "About" },
   { href: "#", text: "Contact" }
 ]
+
+import { provide } from 'vue'
+
+provide('links', navLinks)
 </script>
