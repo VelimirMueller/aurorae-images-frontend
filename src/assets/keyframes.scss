@@ -1,0 +1,49 @@
+@keyframes navLinkAnimation {
+    0% {
+      padding-top: 18px;
+      width: 5px;
+      height: 1px;
+      background-color: #60c9f3;
+    }
+    95% {
+      padding-top: 20px;;
+      width: 55px;
+      height:1px;
+      opacity: 0;
+    }
+    100% {
+      display: none;
+      text-decoration: underline;
+    }
+  }
+  
+  .link:hover {
+    &::before {
+      z-index: 999;
+      animation: navLinkAnimation .45s ease-in-out 1;
+      content: '';
+      border-bottom: solid 1px black;
+      position: absolute;
+    }
+  }
+  
+  @keyframes signInAnimation {
+    from {
+      background-position: 0% 0%;
+      filter: grayscale(0%);
+    }
+    to {
+      background-position: 100% 0%;
+      transform: scale(1.05);
+      filter: grayscale(80%);
+    }
+  }
+  
+  .sign-in {
+    background-image: repeating-linear-gradient(-25deg,hsl(0, 0%, 100%) 0%,hsl(120, 47%, 91%) 15%,hsl(31, 49%, 90%) 30%,hsl(213, 56%, 94%) 45%);
+    background-size: 1550% 1200%;
+    &:hover {
+      animation: signInAnimation alternate 2s ease-in-out infinite;
+      animation-direction: alternate-reverse;
+    }
+  }
