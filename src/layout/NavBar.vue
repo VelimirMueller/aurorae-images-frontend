@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import AccessibleButton from '@/components/AccessbleButton.vue'
-import DefaultIcon from './DefaultIcon.vue'
+import DefaultIcon from '@/layout/DefaultIcon.vue'
 
 const props = defineProps({
   navLinks: {
