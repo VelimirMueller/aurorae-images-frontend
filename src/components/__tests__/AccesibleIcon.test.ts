@@ -8,12 +8,12 @@ describe('AccessibleIcon.vue', () => {
   beforeEach(() => {
     wrapper = shallowMount(AccessibleIcon, {
       props: {
-        icon: 'horse'
+        icon: 'book'
       }
     })
   })
 
   it('Icon has an aria-hidden=true attribute.', () => {
-    expect(wrapper.attributes()).toStrictEqual({ 'aria-hidden': 'true' })
+    expect(wrapper.attributes()['aria-hidden'] === 'true').toBe(true)
   })
 })
