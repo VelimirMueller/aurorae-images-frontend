@@ -16,4 +16,15 @@ describe('AccessibleIcon.vue', () => {
   it('Icon has an aria-hidden=true attribute.', () => {
     expect(wrapper.attributes()['aria-hidden'] === 'true').toBe(true)
   })
+
+  it('Setting icon size works correctly.', async () => {
+    wrapper.setProps({
+      icon: 'book',
+      size:[32, 32]
+    })
+    await wrapper.vm.$nextTick()
+    
+    expect(wrapper.attributes().width === wrapper.vm.size[0] + 'px').toBe(true)
+    expect(wrapper.attributes().height === wrapper.vm.size[1] + 'px').toBe(true)
+  })
 })
