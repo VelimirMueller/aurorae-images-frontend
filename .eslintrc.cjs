@@ -46,9 +46,9 @@ module.exports = {
       'multiline': 'never'
     }],
     'vue/html-closing-bracket-spacing': ['error', {
-      'startTag': 'always',
+      'startTag': 'never',
       'endTag': 'never',
-      'selfClosingTag': 'never'
+      'selfClosingTag': 'always'
     }],
     'vue/attributes-order': ['error', {
       'order': [
