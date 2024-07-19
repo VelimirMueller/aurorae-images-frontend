@@ -1,13 +1,13 @@
 <template>
   <a 
-    class="logo block w-48 bg-white flex items-center p-4 px-8 text-xl font-bold w-1/3 h-2/3 ml-2 rounded-lg p-2 mr-auto border-2 border-cyan-600 justify-center"
+    class="logo block flex items-center p-4 px-8 text-xl h-2/3 ml-2 rounded-lg p-2 justify-start bg-white border-cyan-700 border-2 text-cyan-900"
     href="#">
     <AccessibleIcon
       icon="book" 
-      :size="[55, 55]" />
+      :size="[48, 48]" />
     <span 
       class="ml-2 mt-1">
-      {{ 'LEARNING APP' }}
+      {{ 'LP' }}
     </span>
   </a>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <DefaultLayout>
-    <h1 class="text-4xl font-bold h-full">
-      Hello World!
-    </h1>
+    <span>
+      test
+    </span>
   </DefaultLayout>
 </template>
 
