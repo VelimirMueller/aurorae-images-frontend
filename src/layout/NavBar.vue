@@ -2,35 +2,25 @@
   <nav 
     role="navigation"
     class="flex w-full items-center bg-blue-400 h-24">
-    <a 
-      v-if="props.icon"
-      class="sign-in w-full flex items-center p-4 px-8 text-2xl font-bold w-1/3 bg-white h-2/3 ml-2 rounded-lg p-2 mr-auto border-2 border-cyan-600 justify-center"
-      href="#">
-      <AccessibleIcon
-        :icon="props.icon" 
-        :size="props.iconSize" />
-      <span class="ml-2 mt-1">
-        {{ 'LEARNING APP' }}
-      </span>
-    </a>
-    <ul class="w-full flex h-full items-center justify-center hover:text-bold">
-      <temlate 
+    <DefaultIcon v-if="props.hasDefaultIcon" />
+    <ul class="w-full flex h-e items-center justify-center hover:text-bold">
+      <template 
         v-for="link in props.navLinks"
         :key="link.text">
-        <li class="mr-12">
-          <a class="link mx-4" :href="link.href">
+        <li class="mr-12 hover:text-cyan-900 hover:underline hover:-translate-y-px hover:translate-x-px transition-all duration-900 cubic-beziere delay-200">
+          <a class="link mx-4 h-24" :href="link.href">
             {{ link.text ?? '' }}
           </a>
         </li>
-      </temlate>
+      </template>
     </ul>
-    <AccessibleButton :is-animated="true" text="SIGN IN" />
+    <AccessibleButton class="hover:text-cyan-900" :is-animated="true" text="SIGN IN" type="button" />
   </nav>
 </template>
 
 <script setup lang="ts">
-import AccessibleIcon from '@/components/AccessibleIcon.vue'
 import AccessibleButton from '@/components/AccessbleButton.vue'
+import DefaultIcon from './DefaultIcon.vue'
 
 const props = defineProps({
   navLinks: {
@@ -39,16 +29,10 @@ const props = defineProps({
     default: () => {}
   },
 
-  icon: {
-    type: String,
+  hasDefaultIcon: {
+    type: Boolean,
     required: false,
-    default: ''
-  },
-
-  iconSize: {
-    type: Array,
-    required: false,
-    default: () => [16, 16]
+    default: false
   }
 })
 </script>

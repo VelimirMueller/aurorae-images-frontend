@@ -2,8 +2,7 @@
   <div class="flex flex-col h-screen max-h-screen">
     <NavBar 
       :nav-links="navLinks" 
-      icon="book" 
-      :icon-size="[55, 55]" />
+      :has-default-icon="true" />
     <div class="h-full overflow-y-scroll">
       <slot />
     </div>
