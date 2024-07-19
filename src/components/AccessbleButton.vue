@@ -1,6 +1,6 @@
 <template>
   <button 
-    :class="`${props.isAnimated ? 'sign-in' : ''} w-48 rounded-md text-cyan-900 h-1/2 mr-4 border-2 border-cyan-600 bg-white hover:underline`">
+    :class="`${props.isAnimated ? 'sign-in' : ''} w-48 rounded-md text-cyan-900 h-full mr-4 border-2 border-cyan-600 bg-white hover:underline`">
     {{ props.text }}
   </button>
 </template>
