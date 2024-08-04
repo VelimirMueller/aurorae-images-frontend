@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import AccessibleButton from '@/components/AccessbleButton.vue'
+import AccessibleButton from '@/components/AccessibleButton.vue'
 import DefaultIcon from '@/layout/components/DefaultIcon.vue'
 import DefaultLinkList from '@/layout/components/DefaultLinkList.vue'
 
