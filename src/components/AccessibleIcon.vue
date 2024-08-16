@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { PhBookOpenText } from "@phosphor-icons/vue"
+import { PhBookOpenText, PhCloudArrowUp } from "@phosphor-icons/vue"
 import { computed } from 'vue'
 import type { IconMap } from '@/utils'
 import { IconVariants } from '@/utils'
@@ -62,7 +62,8 @@ const iconToRender = computed(() => {
 
 
 const mapping: IconMap[] = [
-  { id: IconVariants.Book, icon: PhBookOpenText, type: 'iconComponent' }
+  { id: IconVariants.Book, icon: PhBookOpenText, type: 'iconComponent' },
+  { id: IconVariants.Upload, icon: PhCloudArrowUp, type: 'iconComponent' }
   // Add more phosphoricons here
 ]
 </script>

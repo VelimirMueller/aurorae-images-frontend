@@ -10,7 +10,8 @@ export interface IconMap extends IdObjects<string> {
 }
 
 export enum IconVariants {
-  Book = 'book'
+  Book = 'book',
+  Upload = 'upload'
 }
 
 export const createIcons = (arrayOfIcons: IconMap[]): IconMap[] => {
