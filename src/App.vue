@@ -1,11 +1,11 @@
 <template>
   <DefaultLayout>
-    <span>
-      test
-    </span>
+    <LandingPage />
   </DefaultLayout>
 </template>
 
 <script setup lang="ts">
 import DefaultLayout from '@/layout/DefaultLayout.vue'
+import LandingPage from '@/views/LandingPage.vue'
 </script>
+

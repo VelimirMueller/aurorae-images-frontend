@@ -1,7 +1,7 @@
 <template>
   <form class="h-full w-full flex flex-col justify-center items-center">
-    <template v-if="previewUrl">
-      <div class="bg-white w-full h-full relative">
+    <div class="bg-white w-full h-full relative">
+      <template v-if="previewUrl">
         <div 
           class="absolute right-0 text-4xl mr-2 mt-2 cursor-pointer" 
           @click="resetImage()">
@@ -11,8 +11,8 @@
           class="w-full h-full" 
           :src="previewUrl" 
           alt="uploaded image preview" />
-      </div>
-    </template>
+      </template>
+    </div>
     <input 
       ref="inputFile" 
       class="w-full bg-white" 
