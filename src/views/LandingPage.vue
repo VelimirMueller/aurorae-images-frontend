@@ -21,7 +21,7 @@
               @reset="reset()"
               @set-file="val => setFileInfo(val)" />
             <div class="bg-gray-900 flex flex-col justify-center items-center text-white p-8">
-              <div class="h-1/4 w-full text-white">
+              <div class="h-1/6 w-full text-white">
                 <ul 
                   v-if="file"
                   class="h-full">
@@ -34,13 +34,13 @@
                 </ul>
               </div>
 
-              <div class="w-full h-3/4 flex flex-col">
+              <div class="w-full h-full flex flex-col">
                 <div class="h-full">
-                  <ul class="max-h-[300px] overflow-y-scroll">
+                  <ul class="max-h-[600px] overflow-y-scroll">
                     <template 
                       v-for="result in searchResult.data"
                       :key="result.topic_id">
-                      <ul class="border-t-4 mb-8 py-4 px-2">
+                      <ul class="border-t-4 mb-8 py-4 px-2 bg-gray-800 rounded-md mx-2">
                         <li class="my-2">
                           {{ `solved: ${JSON.stringify(result.topic_status)}` }}
                         </li>
@@ -54,6 +54,15 @@
                           <a class="text-blue-400 hover:text-blue-200" :href="result.topic_link" target="_blank">
                             link to forum
                           </a>
+                        </li>
+                        <li>
+                          <div v-if="result.topic_images.length" class="max-h-[300px] overflow-y-scroll p-12">
+                            <template v-for="(imageSrc, idx) in result.topic_images" :key="idx">
+                              <div class="w-full bg-red-200 rounded-lg">
+                                <img class="h-full w-full" :src="imageSrc" />
+                              </div>
+                            </template>
+                          </div>
                         </li>
                       </ul>
                     </template>
