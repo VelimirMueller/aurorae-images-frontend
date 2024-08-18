@@ -17,9 +17,16 @@
         </div>
         <div class="w-full h-full">
           <div class="h-full w-full p-12 bg-red-400 grid grid-cols-2">
-            <ImageUploader />
+            <ImageUploader @set-file="val => setFileInfo(val)" />
             <div class="bg-white flex justify-center items-center">
-              right side
+              <ul v-if="file">
+                <li>
+                  {{ 'FILENAME: ' + file.filename }}
+                </li>
+                <li>
+                  {{ 'FILESIZE: ' + (file.size / 1024 / 1024).toFixed(2) + 'MB' }}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -47,4 +54,11 @@
 <script setup lang="ts">
 import LpHero from '@/components/landingPage/LpHero.vue'
 import ImageUploader from '@/components/ImageUploader.vue'
+import { ref } from 'vue'
+const file = ref()
+
+const setFileInfo = (val: any) => {
+  console.log(val)
+  file.value = val
+}
 </script>

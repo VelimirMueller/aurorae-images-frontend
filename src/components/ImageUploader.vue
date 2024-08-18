@@ -47,7 +47,9 @@
 import AccessibleIcon from '@/components/AccessibleIcon.vue'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
- 
+
+const emits = defineEmits(['set-file'])
+
 interface InputFile {
   files: Array<Blob|MediaSource>
 }
@@ -55,6 +57,17 @@ interface InputFile {
 const inputFile: Ref<InputFile | undefined> = ref(undefined)
 const previewUrl: Ref<string> = ref('')
 const uploadForm: Ref<HTMLFormElement | undefined> = ref()
+
+interface ImageUploadResponse {
+  data: {
+    image: {
+      file: object
+      filename: string
+      size: number
+      headers: object
+    }
+  }
+}
 
 const setPreviewUrl = async (): Promise<void> => {
   try {
@@ -67,8 +80,13 @@ const setPreviewUrl = async (): Promise<void> => {
         body: payload
       })
         .then(res => res.json())
-        .then(data => {
+        .then((data: ImageUploadResponse) => {
           console.log(data)
+          emits('set-file', {
+            file: data.data.image.file, 
+            filename: data.data.image.filename, 
+            size: data.data.image.size
+          })
         })      
     }
   } catch (err) {
