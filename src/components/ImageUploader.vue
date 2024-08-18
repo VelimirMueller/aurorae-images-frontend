@@ -48,7 +48,7 @@ import AccessibleIcon from '@/components/AccessibleIcon.vue'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 
-const emits = defineEmits(['set-file'])
+const emits = defineEmits(['set-file', 'reset'])
 
 interface InputFile {
   files: Array<Blob|MediaSource>
@@ -96,6 +96,7 @@ const setPreviewUrl = async (): Promise<void> => {
 
 const resetImage = () => {
   previewUrl.value = ''
+  emits('reset')
 }
 </script>
 
