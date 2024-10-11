@@ -6,7 +6,7 @@
     <div class="h-full overflow-y-scroll">
       <slot />
     </div>
-    <div class="h-12 p-4 bg-blue-400">
+    <div class="h-12 p-4 bg-gradient-to-r from-gray-900 via-teal-900 to-teal-400 text-gray-50">
       FOOTER
     </div>
   </div>

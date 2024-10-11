@@ -34,7 +34,7 @@
         </div>
         <div class="w-full h-full flex items-center justify-center p-8">
           <img  
-            class="w-full h-full"
+            class="h-[600px] overflow-scroll"
             :src="previewUrl" 
             alt="uploaded image preview" />
         </div>

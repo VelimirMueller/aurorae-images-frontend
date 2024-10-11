@@ -1,7 +1,7 @@
 <template>
   <nav 
     role="navigation"
-    class="flex flex-row w-full items-center bg-blue-400 h-24 px-4">
+    class="flex flex-row w-full items-center bg-gradient-to-r from-gray-900 via-teal-900 to-teal-400 h-24 px-4">
     <template class="hidden lg:flex w-full h-full">
       <DefaultIcon 
         v-if="props.hasDefaultIcon"
