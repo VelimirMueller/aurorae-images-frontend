@@ -10,7 +10,7 @@
 
 <style scoped lang="scss">
 #hero-def {
-  background: url(../images/image.png) no-repeat center center fixed;
+  background: url('/images/image.png') no-repeat center center fixed;
   background-size: cover;
 }
 </style>
