@@ -75,7 +75,7 @@ const setPreviewUrl = async (): Promise<void> => {
       previewUrl.value = window.URL.createObjectURL(inputFile.value.files[0])
       const payload = new FormData(uploadForm.value)
       
-      fetch('http://localhost:8000/upload/', {
+      fetch('http://172.17.0.2:8080/upload/', {
         method: 'POST',
         body: payload
       })

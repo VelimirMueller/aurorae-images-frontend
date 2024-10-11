@@ -6,7 +6,7 @@
           <section 
             id="section:ImageUploader"
             class="h-full">
-            <div class="h-full w-full p-12 bg-gray-200 grid grid-cols-2">
+            <div class="h-full w-full p-12 bg-gray-200 grid grid-cols-2 rounded-md">
               <ImageUploader 
                 @reset="reset()"
                 @set-file="val => setFileInfo(val)" />
@@ -110,7 +110,7 @@ const searchQuery = ref()
 const searchResult: Ref<SearchResult|undefined> = ref()
 
 const scrapeData = () => {
-  fetch(`http://localhost:8000/scrape/${searchQuery.value}`, {method: 'POST'})
+  fetch(`http://127.0.0.1:8000/scrape/${searchQuery.value}`, {method: 'POST'})
     .then(res => res.json())
     .then(data => {
       console.log(data)
