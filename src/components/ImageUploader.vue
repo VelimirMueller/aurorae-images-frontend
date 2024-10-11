@@ -10,7 +10,7 @@
             for="image-upload" 
             class="custom-file-upload">
             <AccessibleIcon 
-              class="text-blue-400" 
+              class="text-teal-600" 
               icon="upload" 
               :size="[248, 248]" />
             <h2 class="text-4xl">
