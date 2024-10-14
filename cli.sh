@@ -1,31 +1,54 @@
 #!/bin/bash
+
 # Define variables
 IMAGE_NAME="frontend"
 IMAGE_TAG="dev"
 CONTAINER_NAME="dev_courses_frontend"
 PORT="8080"
 
-# Function to display available commands
+# Define color variables
+WHITE='\033[1;37m'
+CYAN='\033[0;36m'
+YELLOW='\033[0;33m'
+HIGH='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+# Define text weight
+BOLD='\033[1m'
+NORMAL='\033[0m'
+
+# Function to display the help menu with color formatting
 show_help() {
-    echo "Available commands:"
-    echo "  build       - Build the Docker image"
-    echo "  start       - Start the Docker container"
-    echo "  dev         - Start a dev webserver"
-    echo "  app_ip      - Display application access URL"
-    echo "  down        - Stop and remove the Docker container"
-    echo "  ip          - Show the container's internal IP address"
-    echo "  shell       - Access the container's shell"
-    echo "  fresh_dev - starts a dev server and builds a fresh image and also removes the old container and replaces it with a new one"
+    echo
+    echo -e "${BOLD}${YELLOW}╔══════════════════════════════════════════════════════════════╗"
+    echo -e "${BOLD}${YELLOW}║         ${BOLD}${WHITE}VLM IMAGE CLASSIFIER FRONTEND ${HIGH}v0.0.1-alpha${YELLOW}           ║"
+    echo -e "${YELLOW}╔══════════════════════════════════════════════════════════════╗${NC}"
+    echo -e "${YELLOW}║ ${CYAN}${BOLD}AVAILABLE${NORMAL} ${YELLOW}   ║ ${BOLD}${WHITE}COMMAND                                       ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║ ${CYAN}${BOLD}COMMANDS${NORMAL} ${YELLOW}    ║ ${BOLD}${WHITE}DESCRIPTION                                   ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║══════════════════════════════════════════════════════════════║${NC}"
+    echo -e "${YELLOW}║  ${CYAN}${BOLD}build${WHITE}${NORMAL}       ${YELLOW}-${WHITE} Build the Docker image                        ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║  ${CYAN}${BOLD}start${WHITE}${NORMAL}       ${YELLOW}-${WHITE} Start the Docker container                    ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║  ${CYAN}${BOLD}dev${WHITE}${NORMAL}         ${YELLOW}-${WHITE} Start a dev webserver                         ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║  ${CYAN}${BOLD}ip${WHITE}${NORMAL}          ${YELLOW}-${WHITE} Display application access URL                ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║  ${CYAN}${BOLD}down${WHITE}${NORMAL}        ${YELLOW}-${WHITE} Stop and remove the Docker container          ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║  ${CYAN}${BOLD}shell${WHITE}${NORMAL}       ${YELLOW}-${WHITE} Access the container's shell                  ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║  ${CYAN}${BOLD}fresh_dev${WHITE}${NORMAL}   ${YELLOW}-${WHITE} Starts a dev server, builds a fresh image,    ${YELLOW}║${NC}"
+    echo -e "${YELLOW}║                ${BOLD}${WHITE}and also removes the old container and ${YELLOW}       ║${NC}"
+    echo -e "${YELLOW}║                ${BOLD}${WHITE}replaces it with a new one                    ${YELLOW}║${NC}"
+    echo -e "${YELLOW}╚══════════════════════════════════════════════════════════════╝${NC}"
+    echo
 }
 
 # Function to build the Docker image
 build_image() {
-    echo "Building the Docker image..."
+    echo
+    echo -e "${BLUE}Building the Docker image...${NC}"
     sudo docker build . -t $IMAGE_NAME:$IMAGE_TAG
     if [ $? -eq 0 ]; then
-        echo "Docker image built successfully."
+        echo -e "${HIGH}Docker image built successfully.${NC}"
     else
-        echo "Docker build failed."
+        echo -e "${RED}Docker build failed.${NC}"
         exit 1
     fi
 }
@@ -33,68 +56,55 @@ build_image() {
 # Function to start the Docker container
 start_container() {
     echo
-    echo "STEP: STARTING DOCKER CONTAINER"
-    echo "-----------------------------"
-    echo
+    echo -e "${CYAN}\nSTEP: STARTING DOCKER CONTAINER\n-----------------------------${NC}\n"
     sudo docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG
     if [ $? -eq 0 ]; then
-        echo "Container started successfully."
+        echo -e "${HIGH}Container started successfully.${NC}"
     else
-        echo "Failed to start the container."
+        echo -e "${RED}Failed to start the container.${NC}"
         exit 1
     fi
 }
 
 # Function to display application access URL
 show_app_url() {
+    echo
     IP=$(sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_NAME)
     if [ -z "$IP" ]; then
-        echo
-        echo "CONTAINER IS NOT RUNNING"
-        echo
+        echo -e "${RED}${BOLD}\nContainer is not running. Please start the container first.\n${NC}"
     else
-        echo
-        echo "Access the application with prod build at http://$IP:$PORT"
-        echo 
+        echo -e "${HIGH}- Continer address: ${WHITE}http://$IP:$PORT\n${NC}"
+        echo -e "${HIGH}- Serve prod build with http-server at ${WHITE}http://$IP:$PORT\n${NC}"
     fi
 }
 
 # Command: Stop and remove the container
 down_container() {
     echo
-    echo "STEP: STOPPING AND REMOVING THE CONTAINER..."
-    echo "-----------------------------"
-    echo
+    echo -e "${CYAN}\nSTEP: STOPPING AND REMOVING THE CONTAINER...\n-----------------------------${NC}\n"
     sudo docker stop $CONTAINER_NAME 2>/dev/null
     sudo docker rm $CONTAINER_NAME 2>/dev/null
-    echo "Container stopped and removed."
-    echo
+    echo -e "${HIGH}Container stopped and removed.${NC}\n"
 }
 
 # Command: Access the container shell
 access_shell() {
     echo
-    echo "STEP: ACCESS CONTAINER SHELL WITH COMMAND: $0"
-    echo "-----------------------------"
-    echo
+    echo -e "${CYAN}\nSTEP: ACCESS CONTAINER SHELL\n"
     if [ "$(sudo docker ps -q -f name=$CONTAINER_NAME)" ]; then
-        echo "Accessing the container shell..."
+        echo -e "${BLUE}Accessing the container shell...${NC}"
         sudo docker exec -it $CONTAINER_NAME "$@"
     else
-        echo "Container is not running. Please start the container first."
+        echo -e "${RED}${BOLD}Container is not running. Please start the container first.${NC}"
     fi
-    echo
 }
 
+# Function to start the frontend in dev mode
 dev () {
     echo
-    echo "STEP: STARTING FRONTEND IN DEV MODE"
-    echo "-----------------------------"
-    echo
+    echo -e "${CYAN}\nSTEP: STARTING FRONTEND IN DEV MODE\n-----------------------------${NC}\n"
     sudo docker exec -it $CONTAINER_NAME yarn dev --host
-    echo
 }
-
 
 # Parse the argument and call the appropriate function
 case $1 in
@@ -105,7 +115,7 @@ case $1 in
         start_container
         show_app_url
         ;;
-    app_ip)
+    ip)
         show_app_url
         ;;
     down)
