@@ -10,7 +10,9 @@
             <div class="h-20 w-full px-4 py-2 mt-2">
               <slot name="search" />
             </div>
-            <slot name="list" />
+            <div class="h-[626px] w-full">
+              <slot name="list" />
+            </div>
           </div>
         </div>
       </section>

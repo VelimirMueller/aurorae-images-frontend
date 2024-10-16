@@ -6,6 +6,6 @@
 
 <script setup lang="ts">
 import DefaultLayout from '@/layout/DefaultLayout.vue'
-import LandingPage from '@/views/LandingPage.vue'
+import LandingPage from '@/views/landing/LandingPage.vue'
 </script>
 

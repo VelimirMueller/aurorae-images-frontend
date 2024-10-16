@@ -7,11 +7,9 @@
             @reset="() => {}"
             @set-file="val => {}" />
         </template>
-
         <template #search>
           <ImageSearch @submit="scrapeData" />
         </template>
-        
         <template #list>
           <ImageList :search-result="searchResult" />
         </template>
@@ -21,11 +19,11 @@
 </template>
 
 <script setup lang="ts">
-import LpHero from '@/components/landingPage/LpHero.vue'
-import ImageList from '@/components/ImageList.vue'
-import ImageSearch from '@/components/ImageSearch.vue'
-import ImageUploader from '@/components/ImageUploader.vue'
-import ImageUploaderWrapper from '@/components/ImageUploaderWrapper.vue'
+import LpHero from '@/views/landing/components/LpHero.vue'
+import ImageList from '@/components/ImageUploader/ImageList.vue'
+import ImageSearch from '@/components/ImageUploader/ImageSearch.vue'
+import ImageUploader from '@/components/ImageUploader/ImageUploader.vue'
+import ImageUploaderWrapper from '@/components/ImageUploader/ImageUploaderWrapper.vue'
 import { ref, type Ref } from 'vue'
 import type { SearchResult } from '@/types'
 
