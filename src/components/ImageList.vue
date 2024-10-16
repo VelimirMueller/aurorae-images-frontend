@@ -19,6 +19,8 @@
 </template>
 
 <script setup lang="ts">
+import type { SearchResult } from '@/types'
+
 const props = defineProps({
   searchResult: {
     type: Object,
