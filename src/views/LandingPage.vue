@@ -10,13 +10,11 @@
               <ImageUploader 
                 @reset="() => {}"
                 @set-file="val => {}" />
-              <div class="flex flex-col justify-center items-center text-white h-full w-full bg-gradient-to-r from-gray-900 to-teal-800 focus:border-teal-400">
-                <div class="h-20 w-full p-2 mt-2">
+              <div class="flex flex-col justify-center items-center text-white h-full w-full bg-gray-800 rounded-md">
+                <div class="h-20 w-full px-4 py-2 mt-2">
                   <ImageSearch @submit="scrapeData" />
                 </div>
-                <div class="w-full h-full flex flex-col">
-                  TEST
-                </div>
+                <ImageList :search-result="searchResult" />
               </div>
             </div>
           </section>
@@ -28,21 +26,11 @@
 
 <script setup lang="ts">
 import LpHero from '@/components/landingPage/LpHero.vue'
+import ImageList from '@/components/ImageList.vue'
 import ImageSearch from '@/components/ImageSearch.vue'
 import ImageUploader from '@/components/ImageUploader.vue'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
-
-interface SearchResult {
-  data?: {
-    topic_id: string
-    topic_status: string
-    topic_headline: string
-    topic_content: string
-    topic_link: string
-    topic_images: []
-  }
-}
 
 const searchResult: Ref<SearchResult|undefined> = ref()
 const scrapeData = (searchQuery: string) => {
