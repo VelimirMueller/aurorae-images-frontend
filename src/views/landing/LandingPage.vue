@@ -37,7 +37,7 @@ const scrapeData = (searchQuery: string) => {
         searchResult.value = data
       })
   } catch (err) {
-    console.error(err)
+    console.error(`Something went wrong when scrapping data. Error: ${err}`)
   }
 }
 </script>
