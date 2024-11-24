@@ -29,11 +29,15 @@ import type { SearchResult } from '@/types'
 
 const searchResult: Ref<SearchResult|undefined> = ref()
 const scrapeData = (searchQuery: string) => {
-  fetch(`http://127.0.0.1:8000/scrape/${searchQuery}`, {method: 'POST'})
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      searchResult.value = data
-    })
+  try {
+    fetch(`http://127.0.0.1:8000/scrape/${searchQuery}`, {method: 'POST'})
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        searchResult.value = data
+      })
+  } catch (err) {
+    console.error(err)
+  }
 }
 </script>
