@@ -28,7 +28,7 @@ import { ref, type Ref } from 'vue'
 import type { SearchResult } from '@/types'
 
 const searchResult: Ref<SearchResult|undefined> = ref()
-const scrapeData = (searchQuery: string) => {
+const scrapeData = (searchQuery: string): void => {
   try {
     fetch(`http://127.0.0.1:8000/scrape/${searchQuery}`, {method: 'POST'})
       .then(res => res.json())
