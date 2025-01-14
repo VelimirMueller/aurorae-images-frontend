@@ -94,7 +94,7 @@ const setPreviewUrl = async (): Promise<void> => {
   }
 }
 
-const resetImage = () => {
+const resetImage = (): void => {
   previewUrl.value = ''
   emits('reset')
 }

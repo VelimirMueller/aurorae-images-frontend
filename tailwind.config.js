@@ -10,6 +10,9 @@ module.exports = {
       }
     },
   },
+  experimental: {
+    optimizeUniversalDefaults: false
+  },
   plugins: [],
 }
 
